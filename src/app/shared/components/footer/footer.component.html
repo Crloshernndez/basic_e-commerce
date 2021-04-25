@@ -1,0 +1,52 @@
+<div class="footer">
+  <div class="footer__container">
+    <div class="footer__left">
+      <h3>products</h3>
+      <ul>
+        <li><a routerLink="/productosNuevos">Productos Nuevos!!!</a></li>
+        <li><a routerLink="/ofertas">Ofertas x)</a></li>
+        <li><a routerLink="/ultimosLanzamientos">Ultimos Lanzamientos</a></li>
+        {{
+          1 + "1"
+        }}
+      </ul>
+    </div>
+    <div class="footer__center">
+      <h3>Acerca de Tienda-Platzi</h3>
+      <ul>
+        <li><a routerLink="/tienda-platzi">Sobre Nosotros</a></li>
+        <li><a routerLink="/tiendas">Nuestras Tiendas</a></li>
+      </ul>
+    </div>
+    <div class="footer__rigth">
+      <h3>Contactanos</h3>
+      <!-- input -->
+      <mat-form-field class="example-full-width">
+        <mat-label>Email</mat-label>
+        <input
+          type="email"
+          matInput
+          [formControl]="emailField"
+          placeholder="Ex. pat@example.com"
+        />
+        <mat-error
+          *ngIf="
+            emailField.hasError('email') && !emailField.hasError('required')
+          "
+        >
+          Please enter a valid email address
+        </mat-error>
+        <mat-error *ngIf="emailField.hasError('required')">
+          Email is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+      <button
+        mat-raised-button
+        [disabled]="emailField.invalid"
+        (click)="sendEmail()"
+      >
+        enviar
+      </button>
+    </div>
+  </div>
+</div>

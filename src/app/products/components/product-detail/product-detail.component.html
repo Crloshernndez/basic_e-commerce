@@ -1,0 +1,15 @@
+<div *ngIf="product">
+  <div class="productDetail_img">
+    <img [src]="product.image" alt="foto del producto" />
+  </div>
+  <div>
+    <ul>
+      <li>Nombre: {{ product.title | uppercase }}</li>
+      <li>Precio: {{ product.price | currency }}</li>
+    </ul>
+    <p>{{ product.description }}</p>
+  </div>
+  <button (click)="createProduct()">crear</button>
+  <button (click)="updateProduct()">update</button>
+  <button (click)="deleteProduct()">delete</button>
+</div>

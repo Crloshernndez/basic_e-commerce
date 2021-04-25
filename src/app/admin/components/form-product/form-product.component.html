@@ -1,0 +1,76 @@
+<form [formGroup]="form" (ngSubmit)="saveProduct($event)">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>Producto</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="row">
+        <div class="clo-xs">
+          <mat-form-field>
+            <input formControlName="id" matInput type="text" placeholder="id" />
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="clo-xs">
+          <mat-form-field>
+            <input
+              formControlName="title"
+              matInput
+              type="text"
+              placeholder="title"
+            />
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="clo-xs">
+          <mat-form-field>
+            <input
+              formControlName="price"
+              matInput
+              type="number"
+              placeholder="price"
+            />
+          </mat-form-field>
+          <div *ngIf="priceField.errors && priceField.dirty">
+            <mat-error *ngIf="priceField.hasError('price_invalid')">
+              El monto esta fuera de rango
+            </mat-error>
+            <mat-error *ngIf="priceField.hasError('required')">
+              Este campo es requerido
+            </mat-error>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="clo-xs">
+          <mat-form-field>
+            <textarea
+              formControlName="description"
+              matInput
+              type="text"
+              placeholder="description"
+            >
+            </textarea>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="clo-xs">
+          <img
+            style="width: 100px"
+            *ngIf="image$ | async as image"
+            [src]="image"
+          />
+          <input type="file" (change)="uploadFile($event)" />
+        </div>
+      </div>
+    </mat-card-content>
+    <mat-card-actions>
+      <button [disabled]="form.invalid" mat-raised-button type="submit">
+        Guardar
+      </button>
+    </mat-card-actions>
+  </mat-card>
+</form>

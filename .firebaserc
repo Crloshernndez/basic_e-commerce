@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "tienda-platzi": {
+      "hosting": {
+        "tienda-platzi": [
+          "tienda-platzi"
+        ]
+      }
+    }
+  }
+}

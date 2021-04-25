@@ -1,0 +1,38 @@
+<form [formGroup]="form" (ngSubmit)="saveRegister($event)">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>Registrate!!!</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="row">
+        <div class="clo-xs">
+          <mat-form-field>
+            <input
+              formControlName="email"
+              matInput
+              type="email"
+              placeholder="email"
+            />
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="clo-xs">
+          <mat-form-field>
+            <input
+              formControlName="password"
+              matInput
+              type="password"
+              placeholder="password"
+            />
+          </mat-form-field>
+        </div>
+      </div>
+    </mat-card-content>
+    <mat-card-actions>
+      <button [disabled]="form.invalid" mat-raised-button type="submit">
+        Guardar
+      </button>
+    </mat-card-actions>
+  </mat-card>
+</form>

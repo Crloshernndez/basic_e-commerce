@@ -1,0 +1,19 @@
+@import "~@angular/material/theming";
+
+$primary: mat-palette($mat-indigo);
+
+.footer {
+  padding: 20px;
+  margin-top: 20px;
+  background-color: mat-color($primary);
+}
+
+.footer__container {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.footer__container a {
+  text-decoration: none;
+  color: darkgrey;
+}
