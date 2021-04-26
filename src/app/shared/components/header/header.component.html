@@ -7,19 +7,26 @@
           >Productos</a
         >
         <a mat-button routerLink="/contact" routerLinkActive="active"
-          >Contactos</a
+          >Contactanos</a
         >
-        <a mat-button routerLink="/register" routerLinkActive="active"
+        <a
+          mat-button
+          routerLink="/register"
+          routerLinkActive="active"
+          *ngIf="!isAuthenticated"
           >Registrate!!!</a
         >
       </nav>
       <div>
-        <a mat-button routerLink="/logIn" routerLinkActiv="active">Log In</a>
+        <a mat-button (click)="onClick()" routerLinkActiv="active">{{
+          isAuthenticated ? "Log out" : "Log in"
+        }}</a>
         <a
           routerLink="/order"
           mat-raised-button
           [matBadge]="total$ | async"
           matBadgeColor="warn"
+          *ngIf="isAuthenticated"
         >
           <mat-icon>shopping_cart</mat-icon>
           carrito

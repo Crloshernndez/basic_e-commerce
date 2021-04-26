@@ -25,12 +25,12 @@ export class AdminGuard implements CanActivate {
     | Promise<boolean | UrlTree>
     | boolean
     | UrlTree {
-    return this.authService.hasUser().pipe(
+    return this.authService.user.pipe(
       map((user) => {
-        if (!user) {
-          return this.router.createUrlTree(['/logIn']);
-        } else {
+        if (user) {
           return true;
+        } else {
+          return this.router.createUrlTree(['/home']);
         }
       })
     );

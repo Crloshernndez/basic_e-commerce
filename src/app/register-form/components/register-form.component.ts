@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormGroup, Validators, FormControl, NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../../core/services/auth/auth.service';
 
@@ -10,36 +10,38 @@ import { AuthService } from '../../core/services/auth/auth.service';
   styleUrls: ['./register-form.component.scss'],
 })
 export class RegisterFormComponent implements OnInit {
-  form: FormGroup;
+  registerForm: FormGroup;
+  error: string = null;
 
-  constructor(
-    private formBuilder: FormBuilder,
-    private router: Router,
-    private authService: AuthService
-  ) {
-    this.buildForm();
-  }
+  constructor(private router: Router, private authService: AuthService) {}
 
-  ngOnInit(): void {}
-
-  saveRegister(event: Event) {
-    event.preventDefault();
-
-    if (this.form.valid) {
-      const register = this.form.value;
-      this.authService
-        .createUser(register.email, register.password)
-        .then(() => {
-          console.log(register);
-          this.router.navigate(['./admin']);
-        });
-    }
-  }
-
-  private buildForm() {
-    this.form = this.formBuilder.group({
-      email: ['', Validators.required],
-      password: [, Validators.required],
+  ngOnInit(): void {
+    this.registerForm = new FormGroup({
+      email: new FormControl('', [Validators.required, Validators.email]),
+      password: new FormControl('', [
+        Validators.required,
+        Validators.minLength(6),
+      ]),
     });
+  }
+
+  saveRegister() {
+    if (!this.registerForm.valid) {
+      return;
+    }
+    const email = this.registerForm.value.email;
+    const password = this.registerForm.value.password;
+
+    this.authService.registerUser(email, password).subscribe(
+      (resData) => {
+        console.log(resData);
+        this.registerForm.reset();
+        this.router.navigate(['/logIn']);
+      },
+      (errorRes) => {
+        this.error = errorRes;
+        console.log(errorRes);
+      }
+    );
   }
 }

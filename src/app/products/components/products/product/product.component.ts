@@ -2,9 +2,9 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 //importamos el modelo de Product
-import { Product } from '../../../product.model';
+import { Product } from '../../../../product.model';
 
-import { CartService } from '../../../core/services/cart/cart.service';
+import { CartService } from '../../../../core/services/cart/cart.service';
 
 //indicamos con el decorador que funcion tendra indicar que tipo de roll cumplira la clase
 @Component({

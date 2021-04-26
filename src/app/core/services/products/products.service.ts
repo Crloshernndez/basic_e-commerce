@@ -9,10 +9,8 @@ import { environment } from '../../../../environments/environment';
   providedIn: 'root',
 })
 export class ProductsService {
-  // inyectamos las dependencias en el constructor
   constructor(private http: HttpClient) {}
 
-  // creamos metodo para solicitar todos los productos
   getAllProducts() {
     // hacemos la petiion con el verbo get e indicamos que resolvera un array de tipo Product
     return this.http.get<Product[]>(environment.uri_api);

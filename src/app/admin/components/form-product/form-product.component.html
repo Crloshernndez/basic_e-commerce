@@ -1,4 +1,4 @@
-<form [formGroup]="form" (ngSubmit)="saveProduct($event)">
+<form [formGroup]="formProduct" (ngSubmit)="saveProduct()">
   <mat-card>
     <mat-card-header>
       <mat-card-title>Producto</mat-card-title>
@@ -7,7 +7,13 @@
       <div class="row">
         <div class="clo-xs">
           <mat-form-field>
-            <input formControlName="id" matInput type="text" placeholder="id" />
+            <input
+              id="id"
+              formControlName="id"
+              matInput
+              type="text"
+              placeholder="id"
+            />
           </mat-form-field>
         </div>
       </div>
@@ -15,6 +21,7 @@
         <div class="clo-xs">
           <mat-form-field>
             <input
+              id="title"
               formControlName="title"
               matInput
               type="text"
@@ -27,6 +34,7 @@
         <div class="clo-xs">
           <mat-form-field>
             <input
+              id="price"
               formControlName="price"
               matInput
               type="number"
@@ -47,6 +55,7 @@
         <div class="clo-xs">
           <mat-form-field>
             <textarea
+              id="description"
               formControlName="description"
               matInput
               type="text"
@@ -59,16 +68,17 @@
       <div class="row">
         <div class="clo-xs">
           <img
+            id="image"
             style="width: 100px"
             *ngIf="image$ | async as image"
             [src]="image"
           />
-          <input type="file" (change)="uploadFile($event)" />
+          <!-- <input type="file" (change)="uploadFile($event)" /> -->
         </div>
       </div>
     </mat-card-content>
     <mat-card-actions>
-      <button [disabled]="form.invalid" mat-raised-button type="submit">
+      <button [disabled]="formProduct.invalid" mat-raised-button type="submit">
         Guardar
       </button>
     </mat-card-actions>

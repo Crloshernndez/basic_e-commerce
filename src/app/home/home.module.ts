@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 // importamos los componentes que usara el modulo
-import { BannerComponent } from './components/banner/banner.component';
+import { BannerComponent } from './components/home/banner/banner.component';
 import { HomeComponent } from './components/home/home.component';
 
 // necesitamos importar el modulo HomeRoutingModule
